@@ -1,6 +1,10 @@
 # nsclc_recurrence
 Recurrence analyses for early stage non-small cell lung cancer patients
 
+Include the statistical analyses implemented with R scripts.
+
+Note that: data/input/output files is not being shared here.
+
 ## Installation
 ```
 install.packages(c('tidyverse', 'glue', 'sqldf'))
