@@ -36,13 +36,3 @@ data = data %>% #count(ecog)
          MDM2=replace_na(df$MDM2, 'Unknown'))
 saveRDS(data, 'out/data_1020.1.RDS')
 
-
-## not run
-data %>% count(Charlson)
-
-## 5-year recurrence rate
-data = data %>%
-      mutate(Status = as.factor(as.integer(df$Event))) %>% #0 for censored, 1 for recurrence/dead
-      mutate(Months = df$Months)
-
-

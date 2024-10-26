@@ -1,4 +1,4 @@
-setwd('~/git/s4-heor/project/JNJ/')
+#setwd('~/git/s4-heor/project/JNJ/')
 source('create_clinical_table.R') 
 library(gt)
 library(tidyverse)
@@ -35,15 +35,3 @@ create_clinical_table(data %>% mutate(fakeGroup='Total'),
   clinical.table.title='Clinical Table', 
   clinical.table.file.name='out/clinical_table_1225_byRecurrence.1.html')
 
-# not run
-create_clinical_table(data %>% mutate(fakeGroup='Total'), 
-                      predictors=c('Gender', 'AgeGroup', 'Race', 'Ethnicity', 'SmokingStatus',
-                         'Histology', 'SurgeryType', 
-                         'StagePlus', 'RecurrenceType', # 'ECOG'
-                         'BMI', # 'Charlson',
-                         'KRAS', 'EGFR', 'TP53', 'MET'), 
-                      group.variable='fakeGroup',
-                      percentage.flag='columns',
-                      p.value.flag='No',
-                      clinical.table.title='Clinical Table', 
-                      clinical.table.file.name='out/clinical_table_1006.2.html')
