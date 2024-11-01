@@ -28,17 +28,18 @@ run_cuminc = function(data, strata=1, outcome=c('Recurrence', 'Death')) {
 
 
 ## competing risks: plus metastasis
-data$end_type_plus = as.character(data$end_type)
-data$end_type_plus[data$RecurrenceType=='distant']='Metastasis'
+data$end_type_plus = as.character(df$end_type)
+data$end_type_plus[df$end_type=='Recurrence']='Local/Regional Recurrence'
+data$end_type_plus[df$recurrence_type=='distant']='Metastasis'
 data$Status = factor(data$end_type_plus, 
-                     levels=c('LastFollowup', 'Recurrence', 'Metastasis','Death'))
+                     levels=c('LastFollowup', 'Local/Regional Recurrence', 'Metastasis','Death'))
 
 ## overall
-res = run_cuminc(data, strata=1, outcome=c('Recurrence', 'Metastasis', 'Death'))
+res = run_cuminc(data, strata=1, outcome=c('Local/Regional Recurrence', 'Metastasis', 'Death'))
 res$gg
 res$tbl
 
 ## stratified by stage
-res = run_cuminc(data, strata='Stage', outcome=c('Recurrence', 'Metastasis', 'Death'))
+res = run_cuminc(data, strata='Stage', outcome=c('Local/Regional Recurrence', 'Metastasis', 'Death'))
 res$gg + ylim(0,0.5)
 res$tbl
